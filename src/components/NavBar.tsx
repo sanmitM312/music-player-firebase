@@ -7,7 +7,7 @@ import Box from "@mui/material/Box";
 import { styled } from "@mui/material/styles";
 
 const StyledAppBar = styled(AppBar)({
-  background: "linear-gradient(135deg, #1f1f1f, #3d3d3d)",
+  background: "#600909",
   boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.5)",
 });
 
@@ -28,8 +28,10 @@ const Navbar = () => {
     <StyledAppBar position="static">
       <Toolbar sx={{ justifyContent: "space-between" }}>
         <Box sx={{ flex: 1 }} />
-        <Typography variant="h4" sx={{ color: "wheat",fontWeight: "bold" }}>
-          🎵 GROOVY
+        {/* <span><img width="50" height="50" src="https://img.icons8.com/ios/50/aipods-pro-max.png" alt="aipods-pro-max"/></span> */}
+        <Typography variant="h4" sx={{ color: "wheat", fontWeight: "bold" }}>
+        <span><img width="50" height="50" src="https://img.icons8.com/ios/50/aipods-pro-max.png" alt="aipods-pro-max"/>GROOVY</span>
+        {/* GROOVY */}
         </Typography>
         <Box sx={{ flex: 1, display: "flex", justifyContent: "flex-end" }}>
           <Link href="/" passHref>

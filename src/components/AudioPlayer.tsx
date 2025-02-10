@@ -2,9 +2,9 @@ import { useState, useRef } from 'react';
 import { Box, IconButton, Slider, styled, Typography, useTheme } from '@mui/material';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
-import SkipPreviousIcon from '@mui/icons-material/SkipPrevious';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
-import SkipNextIcon from '@mui/icons-material/SkipNext';
+import Replay10Icon from '@mui/icons-material/Replay10';
+import Forward10Icon from '@mui/icons-material/Forward10';
 import PauseArrowIcon from '@mui/icons-material/Pause';
 
 const StyledCard = styled(Card)({
@@ -40,16 +40,43 @@ export default function AudioPlayer({ url, title, artist }: AudioPlayerProps) {
     }
   };
 
+  const previousPlay = () => {
+    if(audioRef.current){
+      if(audioRef.current.currentTime < 10){
+        audioRef.current.currentTime = 0;
+      }else{
+        audioRef.current.currentTime = audioRef.current.currentTime - 10;
+      }
+      const progress = (audioRef.current.currentTime / audioRef.current.duration) * 100;
+      setProgress(progress);
+    }
+  };
+  const forwardPlay = () => {
+    if(audioRef.current){
+      if(audioRef.current.currentTime + 10 > audioRef.current.duration){
+        audioRef.current.currentTime = 0;
+      }else{
+        audioRef.current.currentTime = audioRef.current.currentTime + 10;
+      }
+      const progress = (audioRef.current.currentTime / audioRef.current.duration) * 100;
+      setProgress(progress);
+    }
+  };
   const handleTimeUpdate = () => {
     if (audioRef.current) {
       const progress = (audioRef.current.currentTime / audioRef.current.duration) * 100;
+      console.log(audioRef.current.currentTime + " and " + audioRef.current.duration);
       setProgress(progress);
     }
   };
 
   const handleSliderChange = (event: Event, newValue: number | number[]) => {
     if (audioRef.current && typeof newValue === 'number') {
+      // slider value is between 0 and 100
+      // the time is calculated by taking the proportion of the value 
+      // and the total duration of the audio
       const time = (newValue / 100) * audioRef.current.duration;
+      console.log(newValue + " and " + time);
       audioRef.current.currentTime = time;
       setProgress(newValue);
     }
@@ -84,14 +111,14 @@ export default function AudioPlayer({ url, title, artist }: AudioPlayerProps) {
         />
       </Box>
       <Box sx={{ display: 'flex', alignItems: 'center', pl: "40%", pb: 1 }}>
-          <IconButton aria-label="previous">
-            {theme.direction === 'rtl' ? <SkipNextIcon /> : <SkipPreviousIcon />}
+          <IconButton aria-label="previous" onClick={previousPlay}>
+            <Replay10Icon />
           </IconButton>
           <IconButton aria-label="play/pause" onClick={togglePlay}>
             {isPlaying ? <PauseArrowIcon sx={{ height: 38, width: 38 }}/> : <PlayArrowIcon sx={{ height: 38, width: 38 }} />}
           </IconButton>
-          <IconButton aria-label="next">
-            {theme.direction === 'rtl' ? <SkipPreviousIcon /> : <SkipNextIcon />}
+          <IconButton aria-label="next" onClick={forwardPlay}>
+           <Forward10Icon />
           </IconButton>
         </Box>
     </Box>
