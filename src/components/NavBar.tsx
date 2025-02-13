@@ -30,7 +30,7 @@ const Navbar = () => {
         <Box sx={{ flex: 1 }} />
         {/* <span><img width="50" height="50" src="https://img.icons8.com/ios/50/aipods-pro-max.png" alt="aipods-pro-max"/></span> */}
         <Typography variant="h4" sx={{ color: "wheat", fontWeight: "bold" }}>
-        <span><img width="50" height="50" src="https://img.icons8.com/ios/50/aipods-pro-max.png" alt="aipods-pro-max"/>GROOVY</span>
+        <span><img width="50" height="50" src="https://img.icons8.com/ios/50/aipods-pro-max.png" alt="aipods-pro-max"/>GROOWE</span>
         {/* GROOVY */}
         </Typography>
         <Box sx={{ flex: 1, display: "flex", justifyContent: "flex-end" }}>
