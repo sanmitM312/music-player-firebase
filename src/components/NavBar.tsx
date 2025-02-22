@@ -28,14 +28,15 @@ const Navbar = () => {
     <StyledAppBar position="static">
       <Toolbar sx={{ justifyContent: "space-between" }}>
         <Box sx={{ flex: 1 }} />
-        {/* <span><img width="50" height="50" src="https://img.icons8.com/ios/50/aipods-pro-max.png" alt="aipods-pro-max"/></span> */}
         <Typography variant="h4" sx={{ color: "wheat", fontWeight: "bold" }}>
         <span><img width="50" height="50" src="https://img.icons8.com/ios/50/aipods-pro-max.png" alt="aipods-pro-max"/>GROOWE</span>
-        {/* GROOVY */}
         </Typography>
         <Box sx={{ flex: 1, display: "flex", justifyContent: "flex-end" }}>
           <Link href="/" passHref>
             <StyledButton>Home</StyledButton>
+          </Link>
+          <Link href="/playlist" passHref>
+            <StyledButton>PlayList</StyledButton>
           </Link>
           <Link href="/upload" passHref>
             <StyledButton>Upload</StyledButton>

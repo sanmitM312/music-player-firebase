@@ -21,6 +21,8 @@ interface AudioPlayerProps {
   url: string;
   title: string;
   artist: string;
+  onEnded: () => void;
+  autoPlay: boolean;
 }
 
 export default function AudioPlayer({ url, title, artist }: AudioPlayerProps) {
