@@ -21,11 +21,17 @@ interface AudioPlayerProps {
   url: string;
   title: string;
   artist: string;
-  onEnded: () => void;
-  autoPlay: boolean;
+  onEnded?: () => void;
+  autoPlay?: boolean;
 }
 
-export default function AudioPlayer({ url, title, artist }: AudioPlayerProps) {
+export default function AudioPlayer({ 
+  url, 
+  title, 
+  artist, 
+  onEnded,
+  autoPlay = false 
+}: AudioPlayerProps) {
   const theme = useTheme();
   const [isPlaying, setIsPlaying] = useState(false);
   const [progress, setProgress] = useState(0);
